@@ -1,7 +1,5 @@
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Toolkit;
-
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,42 +17,36 @@ public class Main {
 		Player player2 = new Player("Player2");
 		Player player3 = new Player("Player3");
 		Player player4 = new Player("Player4");
-
 		
-		JFrame frame = new JFrame("My Frame");
-		MyWindowListener myWindowListener = new MyWindowListener();
-		frame.addWindowListener ( myWindowListener);
 		
-		JPanel mainPanel = new JPanel(new BorderLayout());
-		
+		// Building the teamPanel
 		JPanel teamPanel = new JPanel(new BorderLayout());
-		JPanel playerPanel = new JPanel(new BorderLayout());
-
 		JLabel teamLabel = new JLabel();
-		
-		// Building up the list of Teams
 		String teams;
 		teams = Team.teamListing();
 		teamLabel.setText(teams);
+		teamPanel.add(teamLabel);
 		
+		// Building the playerPanel
+		JPanel playerPanel = new JPanel(new BorderLayout());
 		JLabel playerLabel = new JLabel();
 		String players;
 		players = Player.playerListing();
 		playerLabel.setText(players);
-
-		// Building up the panel
-		teamPanel.add(teamLabel);
-		
 		playerPanel.add(playerLabel);
-		
+
+		// Building the whole Panel
+		JPanel mainPanel = new JPanel(new BorderLayout());
 		mainPanel.add(teamPanel, BorderLayout.WEST);
 		mainPanel.add(playerPanel, BorderLayout.EAST);
 		
-		// Building up Main Frame
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		frame.setSize((int) screenSize.getHeight(), (int) screenSize.getWidth()/2);
+		// Building Main Frame
+		JFrame frame = new JFrame("Beer Pong Manager");
+		MyWindowListener myWindowListener = new MyWindowListener();
+		frame.setIconImage(new ImageIcon("./icn/beerIcon.png").getImage());
+		frame.addWindowListener ( myWindowListener); 
 		frame.add(mainPanel);
-		
+		frame.pack();
 		frame.setVisible(true);
 		
 	}
