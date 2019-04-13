@@ -44,12 +44,10 @@ public class TeamTest extends TestCase {
 		Player player2 = new Player();
 		Player player3 = new Player();
 		Player player4 = new Player();
-		team.addPlayer(player1);
-		team.addPlayer(player2);
-		team.addPlayer(player3);
-		team.addPlayer(player4);
-
-		assertEquals(3, team.getPlayers().size());
+		assertTrue(team.addPlayer(player1));
+		assertTrue(team.addPlayer(player2));
+		assertTrue(team.addPlayer(player3));
+		assertFalse(team.addPlayer(player4));
 	}
 	
 }
