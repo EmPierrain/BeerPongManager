@@ -33,4 +33,12 @@ public class Player {
 	public String getTeam() {
 		return team;
 	}
+	
+	public static String playerListing() {
+		String line ="<html>";
+		for (int index = 0; index < Player.playerList.size(); index++) {
+			line += Player.playerList.get(index).getName() + "<br><br>";
+		}
+		return line;
+	}
 }
